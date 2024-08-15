@@ -2,7 +2,7 @@ import Sideicons from "./sideicons";
 
 function Sidebar() {
   return (
-    <div className=" w-[68px] p-2 fixed h-full hidden">
+    <div className=" w-[68px] p-2 fixed h-full ">
       <div className="bg-[#F8FAFC] flex justify-between  items-center flex-col gap-4 rounded-sm h-full">
         <div className="mt-1 flex flex-col items-center gap-4">
           
