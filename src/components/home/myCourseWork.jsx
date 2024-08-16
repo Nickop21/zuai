@@ -18,7 +18,7 @@ function MyCourseWork() {
       </h5>
       <div className="flex flex-wrap gap-6 ">
         {coursedata && coursedata.map((course)=>{
-          return <CourseCard coursedata={course} key={course?.fileName} />
+          return <CourseCard coursedata={course} key={course?.id} />
         })}
         
         {/* <CourseCard/> */}
