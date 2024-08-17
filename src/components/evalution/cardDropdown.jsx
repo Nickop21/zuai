@@ -33,7 +33,7 @@ function CardDropdown({dataItem,criteria}) {
         </div>
         <div
           className={`transition-all duration-700 ease-in-out overflow-hidden  ${
-            open ? "opacity-100 max-h-[400px] pt-5" : "opacity-0 max-h-0"
+            open ? "opacity-100 max-h-[600px] pt-5" : "opacity-0 max-h-0"
           }`}
         >
           <div className="border-t-2 border-[#D6DFE4] pt-5">

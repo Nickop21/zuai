@@ -4,9 +4,10 @@ const SelectDropdown = ({ name, value, options, onChange, placeholder }) => {
   return (
     <select 
       name={name} 
-      className="rounded-md p-2 mx-1 outline-none text-[#5B6170] font-bold text-xs"  
+      className="rounded-md p-2 mx-1 outline-none text-[#5B6170] font-bold text-xs "  
       value={value}  
       onChange={onChange}
+      required
     >
       <option value="" disabled>{placeholder}</option>
       {options.map((option, index) => (

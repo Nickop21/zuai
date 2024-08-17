@@ -5,8 +5,8 @@ const courseWorkStore = create(
   persist(
     (set) => ({
       courseData: [],
+      selectedCourseWork:"All",
       
-
       addCourse: (data) =>{
           const processedData = typeof data === 'string' ? JSON.parse(data) : data;
           
@@ -14,7 +14,10 @@ const courseWorkStore = create(
         }));
       },
       clearCourse: () => set(() => ({ data: [] })),
-    }),
+      filterCourse: (selectedCourseWorkdataItem) => set((state) => ({
+        selectedCourseWork: selectedCourseWorkdataItem
+      }))
+          }),
     {
       name: 'courseWork', 
       storage: typeof window !== 'undefined' ? localStorage : undefined, // Ensure localStorage is only used in the browser

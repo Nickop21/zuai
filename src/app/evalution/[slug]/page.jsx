@@ -2,12 +2,13 @@
 import CardDropdown from "@/components/evalution/cardDropdown";
 import CircularProgress from "@/components/evalution/circularProgress";
 import CommanCard from "@/components/evalution/commanCard";
+import PdfExpandCard from "@/components/evalution/pdfExpandCard";
 import courseWorkStore from "@/store/courseWorkStore";
 import { nanoid } from "nanoid";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function Page({ params }) {
+export default function Page() {
   const [evaluteData, setEvaluteData] = useState(null);
   const userID = useParams().slug;
 
@@ -28,7 +29,8 @@ export default function Page({ params }) {
 
 
   return (
-    <div className="pt-80">
+    <div className="pt-10 pb-5">
+      <PdfExpandCard/>
       <CommanCard>
         <div className="flex  justify-between items-center p-2">
           <div>
