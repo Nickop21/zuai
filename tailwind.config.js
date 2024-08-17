@@ -17,40 +17,13 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        'custom': '0px 2.99px 8.97px -1.49px rgba(0, 0, 0, 0.12)',
+      },
       colors: {
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -58,18 +31,43 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        'expand': {
-          from: { maxHeight: '0' },
-          to: { maxHeight: '400px' },
+
+        'fade-in': {
+          '0%': { opacity: 0, transform: 'translateY(10px)' },
+          '50%': { opacity: 0, transform: 'translateY(6px)' },
+          '75%': { opacity: 1, transform: 'translateY(3px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
         },
-        'collapse': {
-          from: { maxHeight: '400px' },
-          to: { maxHeight: '0' },
+        'disappear':{
+          '0%': {
+            opacity: 1
+          },
+          '20%': {
+            color: "#fff"
+          },
+          '100%': {
+            opacity: 0
+          }
         },
+        'appear':{
+          '0%': {
+            opacity: 0
+          },
+          '70%': {
+            opacity: 0
+          },
+          '100%': {
+            opacity: 1
+          }
+        },
+
+        
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        'fade-in': 'fade-in 0.5s ease-out',
+        'extend': 'extend 2s ease-in-out forwards',
+        'disappear': 'disappear 2.2s ease-in-out forwards',
+        'appear': 'appear 3s ease-in-out forwards',
       },
     },
   },

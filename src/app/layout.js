@@ -14,13 +14,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <main className="relative">
-        <Sidebar/>
-        <Container>
-        {children}
-        </Container>
+        <main className="relative">
+          <Sidebar />
+          <div className="p-16">
+            <Container>{children}</Container>
+          </div>
         </main>
-        </body>
+      </body>
     </html>
   );
 }
