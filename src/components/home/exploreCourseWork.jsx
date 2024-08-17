@@ -2,21 +2,39 @@
 import React, { useEffect, useState } from "react";
 import CourseCard from "./courseCard";
 import courseWorkStore from "@/store/courseWorkStore";
+import CourseCardSkeleton from "./courseCardSkeleton";
 
 function ExploreCourseWork() {
   const [currentActive,setCurrentActive]=useState(0)
-  const [coursedata, setcoursedata] = useState(null)
+  let [coursedata, setcoursedata] = useState(null)
   const options = ["All", "research paper", "Term paper", "Non-Fiction", "Thesis"];
+  const filterCourseData=courseWorkStore((state)=>state.filterCourse)
+  const selectedCourseWork=courseWorkStore((state)=>state.selectedCourseWork)
+  
   
   const data = courseWorkStore((state) => state.courseData);
   useEffect(() => {
     setcoursedata(data)
   }, [data]);
+  if (currentActive!=0) {
+
+    coursedata=coursedata?.filter((filter)=>{
+      return  filter.CourseType==selectedCourseWork
+    })    
+  }
+
+
+  useEffect(() => {
+    filterCourseData(options[currentActive])
+  }, [currentActive])
+  
   return (
     <div className="mt-8">
+
       <h5 className="text-xl  mb-3 text-[#5B6170] font-semibold">
         Explore coursework
       </h5>
+
       <div className="flex items-center gap-3 mb-4 ">
         {options.map((opt,index) => {
           return (
@@ -26,16 +44,22 @@ function ExploreCourseWork() {
           );
         })}
       </div>
-      {/* background: #6947BF;
-       */}
-      <div className="flex flex-wrap gap-6 ">
-        {coursedata && coursedata.map((course)=>{
+     
+      <div className="flex flex-wrap gap-6  transition-opacity duration-500 ease-in-out ">
+        {
+          coursedata?.length>0?<>
+          {coursedata.map((course)=>{
           return(
             <CourseCard coursedata={course} key={course?.id}/>
           )
         })}
-       
-        {/* <CourseCard/> */}
+          </>:<>
+          <CourseCardSkeleton/>
+          <CourseCardSkeleton/>
+          </>
+        }
+        
+      
       </div>
     </div>
   );
