@@ -4,20 +4,55 @@ import { AxeIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import SelectDropdown from "../customSelect";
 import Upload from "./upload";
+import { nanoid } from "nanoid";
 
 function EvaluateCourse() {
   const [fileData, setFileData] = useState("");
   const [courseWork, setCourseWork] = useState({
+    id:"",
     fileName: fileData,
     CourseType: "",
     subject: "",
     title: "",
+    feedback:
+      [{
+        strength:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        improvement:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        weakness:[""],
+        score:7,
+        heading:"UnderStanding Knowledge Questions",
+        shortSummary:"The essay identifies and focuses on the knowledge question regarding the resolvability of disputes over knowledge claims within disciplines."
+      },
+      {
+        strength:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        improvement:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        weakness:[""],
+        score:5,
+        heading:"UnderStanding Knowledge Questions",
+        shortSummary:"The essay identifies and focuses on the knowledge question regarding the resolvability of disputes over knowledge claims within disciplines."
+      },
+      {
+        strength:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        improvement:["Demonstrates a good understanding of the prescribed title and the associated knowledge questions.","Addresses the nature of disputes in both the Natural Sciences and Human Sciences effectively."],
+        weakness:[""],
+        score:3,
+        heading:"UnderStanding Knowledge Questions",
+        shortSummary:"The essay identifies and focuses on the knowledge question regarding the resolvability of disputes over knowledge claims within disciplines."
+      },
+ ]   
+  ,
+    time:"",
+    totalScore:0,
+    score:[]
   });
+
+  var montharr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
   const courseTypeOptions = [
-    { value: "Physics", label: "Physics" },
-    { value: "Maths", label: "Maths" },
-    { value: "Computer", label: "Computer" },
-    { value: "Javascript", label: "Javascript" },
+    { value: "research paper", label: "research paper" },
+    { value: "Term paper", label: "Term paper" },
+    { value: "Non-Fiction", label: "Non-Fiction" },
+    { value: "Thesis", label: "Thesis" },
   ];
 
   const subjectOptions = [
@@ -87,16 +122,35 @@ function EvaluateCourse() {
 
   function evaluateScore() {
     if (!isCourseWorkBlank(courseWork)) {
-      addCourse(courseWork);
-      setTimeout(() => {
-        setCourseWork({
+      let obj = new Date(); 
+      let day = obj.getUTCDate(); 
+      let month = obj.getUTCMonth(); 
+      let year = obj.getUTCFullYear(); 
+
+        addCourse({
+          ...courseWork,
+          totalScore: 13,
+          score: [7, 5, 3],
+          time: `${day} ${montharr[month]} ${year}`,
+          id: nanoid(),
+        });
+     
+
+      
+      // clearInterval(setDataTimeOut)
+     setTimeout(() => {
+        setCourseWork((prevCourseWork) => ({
+          ...courseWork,
           fileName: "",
           CourseType: "",
           subject: "",
           title: "",
-        });
+          time:"",
+
+        }));
         resetUpload();
       }, 1000);
+      // clearTimeout(setToBlank)
     }
   }
 

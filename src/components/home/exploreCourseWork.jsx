@@ -6,7 +6,7 @@ import courseWorkStore from "@/store/courseWorkStore";
 function ExploreCourseWork() {
   const [currentActive,setCurrentActive]=useState(0)
   const [coursedata, setcoursedata] = useState(null)
-  const options = ["All", "Physics", "Maths", "Computer", "Javascript"];
+  const options = ["All", "research paper", "Term paper", "Non-Fiction", "Thesis"];
   
   const data = courseWorkStore((state) => state.courseData);
   useEffect(() => {
@@ -31,7 +31,7 @@ function ExploreCourseWork() {
       <div className="flex flex-wrap gap-6 ">
         {coursedata && coursedata.map((course)=>{
           return(
-            <CourseCard coursedata={course} key={course?.fileName}/>
+            <CourseCard coursedata={course} key={course?.id}/>
           )
         })}
        
