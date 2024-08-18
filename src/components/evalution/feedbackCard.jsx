@@ -25,7 +25,7 @@ const headerType=type=="good"? "Strengths":type=="average"?"Scope of Improvement
         <ul className='flex gap-2 flex-col'>
           {textData?.map((text)=>{
             return(
-          <li className='flex gap-4'>
+          <li className='flex gap-4' key={text}>
             <img src={`/home/${imgtype}.svg`} alt="check" height={24} width={24} />
             <span className='font-bold text-sm'>{text}</span>
             
