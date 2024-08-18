@@ -8,7 +8,7 @@ function CourseCard({coursedata}) {
  
   
   return (
-    <Link className="bg-gradient-to-r from-white via-[#D8E3F4]/[32%] to-[#D8E3F4] p-6 rounded-lg shadow-md w-[42%] flex gap-5  cursor-pointer" href={`evalution/${coursedata?.id}`}>
+    <Link className="bg-gradient-to-r from-white via-[#D8E3F4]/[32%] to-[#D8E3F4] p-6 rounded-lg shadow-md w-[42%] flex gap-5  cursor-pointer transition-all duration-500 animate-fade-in " href={`evalution/${coursedata?.id}`}>
       <div className="w-[25%] h-40 bg-[#FFFFFF] rounded-[8px] border-1 border-[#EAF0F2]  px-3">
         <img src="/home/paper.svg" alt="" className="w-full h-full " />
       </div>

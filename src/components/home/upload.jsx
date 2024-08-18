@@ -8,7 +8,9 @@ function Upload({
   handleDrop,
   isDragging,
   resetUpload,
+  error
 }) {
+ 
   return (
     <>
       <div
@@ -30,15 +32,17 @@ function Upload({
             </span>
             <input
               type="file"
+
               id="upload"
               className="hidden"
               onChange={(e) => uploadeDoc(e)}
             />
             <label
               htmlFor="upload"
-              className="rounded-lg p-2 px-6 mt-5 bg-[#FCFBFD] border-2 border-gray-100 shadow-sm shadow-gray-100 text-[#6947BF] font-bold text-[15px] cursor-pointer hover:bg-[#f8f8f8]"
+              className={`rounded-lg p-2 px-6 mt-5 bg-[#FCFBFD] border-2 border-gray-100 shadow-sm shadow-gray-100 text-[#6947BF] font-bold text-[15px] cursor-pointer hover:bg-[#f8f8f8] ${error!="" && " text-[red] animate-pulse border-red-300"}`}
             >
-              upload your file
+              {error=="" ?"upload your file":"size limit exceed"}
+              
             </label>
           </>
         ) : (
