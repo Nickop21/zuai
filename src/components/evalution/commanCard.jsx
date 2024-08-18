@@ -1,8 +1,8 @@
 import React from 'react'
 
-function CommanCard({children}) {
+function CommanCard({children ,classes="mt-4 rounded-3xl bg-[#FFFFFF]"}) {
   return (
-    <div className='rounded-3xl p-3 bg-[#FFFFFF] mt-4'>{children}</div>
+    <div className={`p-4  ${classes}`}>{children}</div>
   )
 }
 

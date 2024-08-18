@@ -114,6 +114,7 @@ function EvaluateCourse() {
 
   const uploadeDoc = (e) => {
     const file = e.target.files[0];
+    // console.log(e.target.files);
     if (!sizeCheck(file)) {
       setFileData(file.name);
       setCourseWork((prevCourseWork) => ({
@@ -148,11 +149,16 @@ function EvaluateCourse() {
     const droppedFiles = e.dataTransfer.files;
     if (droppedFiles.length > 0 && !sizeCheck(droppedFiles[0])) {
       setFileData(droppedFiles[0].name);
+      setCourseWork((prevCourseWork) => ({
+        ...prevCourseWork,
+        fileName: droppedFiles[0].name,
+      }));
     }
   };
 
   const sizeCheck = (file) => {
     const fileSizeInMB = file.size / (1024 * 1024); // Convert size to MB
+    
     setErrors((prevErrors) => ({ ...prevErrors, file: "" }));
 
     if (fileSizeInMB > 25) {
@@ -227,7 +233,7 @@ function EvaluateCourse() {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 md:px-14 lg:px-0">
       {/* Upload section */}
       <div>
         <h1 className="font-bold text-3xl text-[#1E2026]">
@@ -236,7 +242,7 @@ function EvaluateCourse() {
         </h1>
 
         <div className="rounded-sm border-2 border-[#D6DFE4] p-4 bg-[#FCFBFDB8] mt-6 relative overflow-hidden">
-          <div className="relative to">
+          <div className="relative">
             <Upload
               fileData={fileData}
               uploadeDoc={uploadeDoc}
@@ -256,7 +262,7 @@ function EvaluateCourse() {
 
           {/* Select dropdowns */}
           <div className="w-1/2">
-            <h5 className="my-4 text-xs text-[#7A8196]">
+            <h5 className="mt-4 mb-1 text-xs text-[#7A8196]">
               Select your course & subjects*
             </h5>
             <div className="flex">
@@ -285,8 +291,8 @@ function EvaluateCourse() {
           </div>
 
           {/* Title input */}
-          <div className="w-1/2">
-            <h5 className="my-4 text-xs text-[#7A8196]">
+          <div className="lg:w-1/2">
+            <h5 className="mt-4 mb-1 text-xs text-[#7A8196]">
               Enter your essay title* (Required)
             </h5>
             <div className="relative">
@@ -303,8 +309,10 @@ function EvaluateCourse() {
           </div>
 
           {/* Evaluate score button */}
+          <>
+
           <div
-            className={`rounded-md p-2 mt-5 bg-[#ADB8C9] text-[#FFFFFF] w-72 flex gap-2 cursor-pointer  ${
+            className={`rounded-md p-2 mt-5 bg-[#ADB8C9] text-[#FFFFFF] flex gap-2 cursor-pointer w-full sm:w-64  ${
               errors.file || errors.CourseType || errors.subject || errors.title
                 ? "bg-[#ef7d7d] animate-bounce"
                 : "hover:animate-pulse"
@@ -312,10 +320,13 @@ function EvaluateCourse() {
             onClick={evaluateScore}
           >
             <img src="/home/sparkel.svg" alt="sparkel" />
+            <span>
             {errors.file || errors.CourseType || errors.subject || errors.title
               ? "Please fill the required"
               : "Evaluate your score"}
+            </span>
           </div>
+          </>
 
           {/* Loading animation */}
           <div
@@ -329,15 +340,14 @@ function EvaluateCourse() {
       </div>
 
       {/* Left image part */}
-      <div className="w-[345px] flex items-end relative">
-        <div className="rounded-sm mt-6 w-full z-20">
+      <div className="w-[420px] hidden lg:flex flex-col  justify-end  items-end">
+      <img
+          src="/home/astronaut.svg"
+          alt="astronaut"
+        />
+        <div className="rounded-sm  w-full z-20">
           <img src="/home/evaluate.svg" alt="evaluate" />
         </div>
-        <img
-          src="/home/astronaut.svg"
-          alt=""
-          className="absolute top-5 translate-x-[10%]"
-        />
       </div>
     </div>
   );

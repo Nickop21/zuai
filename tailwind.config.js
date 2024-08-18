@@ -13,7 +13,9 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "md":"640px",
+        "xl":"900px",
+        "2xl": "1100px",
       },
     },
     extend: {
@@ -36,6 +38,13 @@ module.exports = {
           '0%': { opacity: 0, transform: 'translateY(10px)' },
           '50%': { opacity: 0, transform: 'translateY(6px)' },
           '75%': { opacity: 1, transform: 'translateY(3px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        
+        'fade-in-side': {
+          '0%': { opacity: 0, transform: 'translatex(10px)' },
+          '50%': { opacity: 0, transform: 'translatex(6px)' },
+          '75%': { opacity: 1, transform: 'translatex(3px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         'disappear':{
@@ -65,6 +74,7 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fade-in 0.5s ease-out',
+        'fade-in-side': 'fade-in-side 0.5s ease-in-out forwards',
         'extend': 'extend 2s ease-in-out forwards',
         'disappear': 'disappear 2.2s ease-in-out forwards',
         'appear': 'appear 3s ease-in-out forwards',

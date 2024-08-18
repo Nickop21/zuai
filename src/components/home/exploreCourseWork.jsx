@@ -35,7 +35,7 @@ function ExploreCourseWork() {
         Explore coursework
       </h5>
 
-      <div className="flex items-center gap-3 mb-4 ">
+      <div className="flex items-center mb-4 sm:gap-4 flex-wrap  ">
         {options.map((opt,index) => {
           return (
             <div className={`p-4  font-bold text-xs rounded-xl cursor-pointer  ${currentActive==index ? "bg-[#FFFFFF] transition-colors ease-linear duration-500 text-[#6947BF]" :"text-[#98A1BB]"}`} key={index} onClick={()=>setCurrentActive(index)}>
@@ -45,7 +45,7 @@ function ExploreCourseWork() {
         })}
       </div>
      
-      <div className="flex flex-wrap gap-6  transition-opacity duration-500 ease-in-out ">
+      <div className="flex flex-wrap gap-4  transition-opacity duration-500 ease-in-out ">
         {
           coursedata?.length>0?<>
           {coursedata.map((course)=>{
