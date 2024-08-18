@@ -7,6 +7,9 @@ function FeedbackCard({type,textData}) {
     average:["rgba(249, 201, 78, 0.5)","rgba(249, 201, 78, 0.02)"],
     bad:["",""]
   }
+  if (!textData) {
+    return
+  }
 
 // Extract the colors for border and background
 const borderColor = strength?.[type]?.[0];
@@ -14,10 +17,6 @@ const backgroundColor = strength?.[type]?.[1];
 const imgtype=type=="good"? "tick":type=="average"?"info":"redcross"
 const headerType=type=="good"? "Strengths":type=="average"?"Scope of Improvement":"Weakness"
 
-
-console.log(textData);
-
-  
   return (
     <div className='mt-6'>
       <h1 className='text-[#000000] font-extrabold text-xl'>{headerType}</h1>

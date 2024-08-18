@@ -20,8 +20,8 @@ function MyCourseWork() {
         My Coursework
       </h5>
 
-      <div className={`flex flex-wrap gap-6`}>
-        {visibleCourses ? (
+      <div className={`flex flex-wrap gap-4`}>
+        {visibleCourses && visibleCourses?.length>1 ? (
           <>
             {visibleCourses.map((course) => {
               return <CourseCard coursedata={course} key={course?.id} />;
@@ -35,7 +35,7 @@ function MyCourseWork() {
         )}
       </div>
       <div
-        className="text-center mt-4 text-[#98A1BB] font-bold text-xs cursor-pointer"
+        className="text-center mt-4 text-[#98A1BB] font-bold text-xs cursor-pointer hover:text-[#6947BF]"
         onClick={() => setShowAll(!showAll)}
       >
         {showAll ? "view less" : "view all"}
