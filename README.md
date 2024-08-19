@@ -2,10 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+#### First, Install node package manager:
 
 ```bash
-npm run dev
+npm i
+
+```
+
+#### Then, run the development server:
+
+```bash
+npm run dev 
 # or
 yarn dev
 # or
@@ -14,23 +21,34 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+Navigate to http://localhost:3000 to view your application in action. The page auto-updates as you edit the app/page.js file.
 
-To learn more about Next.js, take a look at the following resources:
+# 🛠️ Features
+### This app includes the following features:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<span style="color:orange ;">**Drag and Drop of Files:**</span> Easily drag and drop files into the input area.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<span style="color: orange;">**Real-time Data Sync:**</span> Seamlessly sync data with the UI in real-time.
 
-## Deploy on Vercel
+<span style="color: orange;">**Common State Management:**</span> Manage state with Zustand and store data in local storage for persistent access.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<span style="color: orange;">**Effortless Data Storage and Retrieval:**</span> Simple methods to store and retrieve your data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<span style="color: orange;">**Delete Functionality:**</span> Remove specific data items with ease.
+
+<span style="color: orange;">**Cool Animations and Popups:**</span> Enjoy smooth animations and informative popups for warnings and other notifications.
+
+<span style="color: orange;">**Data Filtering:**</span> Apply filters to sort and view data effectively.
+
+<span style="color: orange;">**Responsive and Pixel-Perfect Design:**</span> Experience a design that looks great on all screen sizes.
+
+<span style="color: orange;">**Reusable Components:**</span> Utilize components designed for reuse across your app.
+
+<span style="color: orange;">**PDF Handling:**</span> Resize, zoom in, and zoom out PDFs for better document interaction.
+
