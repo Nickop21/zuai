@@ -21,7 +21,7 @@ function MyCourseWork() {
       </h5>
 
       <div className={`flex flex-wrap gap-4`}>
-        {visibleCourses && visibleCourses?.length > 1 ? (
+        {visibleCourses?.length > 0 ? (
           <>
             {visibleCourses.map((course) => {
               return <CourseCard coursedata={course} key={course?.id} />;
