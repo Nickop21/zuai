@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CourseCard from "./courseCard";
 import courseWorkStore from "@/store/courseWorkStore";
 import CourseCardSkeleton from "./courseCardSkeleton";
+import { useToast } from "../ui/use-toast";
 
 function MyCourseWork() {
   const [coursedata, setcoursedata] = useState(null);
@@ -19,7 +20,6 @@ function MyCourseWork() {
       <h5 className="text-xl mb-3 text-[#5B6170] font-semibold">
         My Coursework
       </h5>
-
       <div className={`flex flex-wrap gap-4`}>
         {visibleCourses?.length > 0 ? (
           <>
@@ -34,12 +34,14 @@ function MyCourseWork() {
           </>
         )}
       </div>
-      <div
-        className="text-center text-[#98A1BB] font-bold text-xs hover:text-[#6947BF]  mt-4 cursor-pointer"
-        onClick={() => setShowAll(!showAll)}
-      >
-        {showAll ? "view less" : "view all"}
-      </div>
+      {visibleCourses?.length > 1 && (
+        <div
+          className="text-center text-[#98A1BB] font-bold text-xs hover:text-[#6947BF]  mt-4 cursor-pointer"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "view less" : "view all"}
+        </div>
+      )}
     </div>
   );
 }
