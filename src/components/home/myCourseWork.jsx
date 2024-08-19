@@ -16,12 +16,12 @@ function MyCourseWork() {
 
   return (
     <div className="mt-8 transition-all">
-      <h5 className="text-xl  mb-3 text-[#5B6170] font-semibold">
+      <h5 className="text-xl mb-3 text-[#5B6170] font-semibold">
         My Coursework
       </h5>
 
       <div className={`flex flex-wrap gap-4`}>
-        {visibleCourses && visibleCourses?.length>1 ? (
+        {visibleCourses && visibleCourses?.length > 1 ? (
           <>
             {visibleCourses.map((course) => {
               return <CourseCard coursedata={course} key={course?.id} />;
@@ -35,7 +35,7 @@ function MyCourseWork() {
         )}
       </div>
       <div
-        className="text-center mt-4 text-[#98A1BB] font-bold text-xs cursor-pointer hover:text-[#6947BF]"
+        className="text-center text-[#98A1BB] font-bold text-xs hover:text-[#6947BF]  mt-4 cursor-pointer"
         onClick={() => setShowAll(!showAll)}
       >
         {showAll ? "view less" : "view all"}
