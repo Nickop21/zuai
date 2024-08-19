@@ -30,7 +30,7 @@ function CourseCard({ coursedata }) {
   function Popup() {
     return (
       <div
-        className={`absolute w-full h-full inset-0  items-center justify-center z-20 backdrop-blur  ${
+        className={`absolute w-full h-full inset-0  items-center justify-center z-20 backdrop-blur duration-200  ${
           isToastOpen ? "flex animate-fade-in" : "hidden"
         }`}
       >
