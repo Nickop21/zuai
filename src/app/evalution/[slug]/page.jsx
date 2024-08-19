@@ -4,7 +4,6 @@ import CircularProgress from "@/components/evalution/circularProgress";
 import CommanCard from "@/components/evalution/commanCard";
 import PdfExpandCard from "@/components/evalution/pdfExpandCard";
 import courseWorkStore from "@/store/courseWorkStore";
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { nanoid } from "nanoid";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -59,7 +58,7 @@ export default function Page() {
       <div className="lg:w-[55%]">
       <PdfExpandCard data={evaluteData}/>
       </div>
-      <div className="lg:w-[45%]">
+      <div className="lg:w-[45%] mt-4">
         <div className="hidden sm:block">
         <Remark/>
         </div>

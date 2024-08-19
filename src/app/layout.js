@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <main className="relative">
           <Sidebar />
-          <div className="py-16 md:py-16">
+          <div className="py-20 md:py-16">
             <Container>{children}</Container>
           </div>
           <Information/>

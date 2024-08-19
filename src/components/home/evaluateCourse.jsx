@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { nanoid } from "nanoid";
 import courseWorkStore from "@/store/courseWorkStore";
@@ -12,11 +12,10 @@ function EvaluateCourse() {
   const [fileData, setFileData] = useState("");
   const [showLoading, setShowLoading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [isErrorDetected, setIsErrorDetected] = useState(false);
 
   const [errors, setErrors] = useState({
     file: "",
-    filesize:"",
+    filesize: "",
     CourseType: "",
     subject: "",
     title: "",
@@ -114,7 +113,6 @@ function EvaluateCourse() {
 
   const uploadeDoc = (e) => {
     const file = e.target.files[0];
-    // console.log(e.target.files);
     if (!sizeCheck(file)) {
       setFileData(file.name);
       setCourseWork((prevCourseWork) => ({
@@ -158,15 +156,14 @@ function EvaluateCourse() {
 
   const sizeCheck = (file) => {
     const fileSizeInMB = file.size / (1024 * 1024); // Convert size to MB
-    
     setErrors((prevErrors) => ({ ...prevErrors, file: "" }));
 
     if (fileSizeInMB > 25) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         filesize: "File size exceeds 25 MB.",
-
       }));
+      PDFUploader(file);
       return true;
     } else {
       setErrors((prevErrors) => ({
@@ -198,34 +195,35 @@ function EvaluateCourse() {
       [name]: value,
     }));
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
-    // setIsErrorDetected(!isErrorDetected)
   };
 
   const evaluateScore = () => {
     if (!isCourseWorkBlank(courseWork)) {
-      return;
       let obj = new Date();
       let day = obj.getUTCDate();
       let month = obj.getUTCMonth();
       let year = obj.getUTCFullYear();
-
-      setCourseWork((prevCourseWork) => ({
-        ...prevCourseWork,
-        id: nanoid(),
-      }));
+      const nanoidd = nanoid();
 
       setShowLoading(true);
-
+      addCourse({
+        ...courseWork,
+        id: nanoidd,
+        totalScore: 13,
+        score: [7, 5, 3],
+        time: `${day} ${montharr[month]} ${year}`,
+        wordCountdata: wordCount,
+        pdfTextdata: pdfText,
+      });
       setTimeout(() => {
-        addCourse({
-          ...courseWork,
-          totalScore: 13,
-          score: [7, 5, 3],
-          time: `${day} ${montharr[month]} ${year}`,
-        });
         resetUpload();
-        setShowLoading(false);
-        router.push(`/evaluation/${courseWork.id}`);
+        setCourseWork((prevCourseWork) => ({
+          ...prevCourseWork,
+          CourseType: "",
+          subject: "",
+          title: "",
+        }));
+        router.push(`/evalution/${nanoidd}`);
       }, 3500);
     } else {
       setIsErrorDetected(true);
@@ -241,7 +239,7 @@ function EvaluateCourse() {
           <span className="text-[#6947BF]">We get you.</span>
         </h1>
 
-        <div className="rounded-sm border-2 border-[#D6DFE4] p-4 bg-[#FCFBFDB8] mt-6 relative overflow-hidden">
+        <div className="rounded-sm border-2 p-4 border-[#D6DFE4] bg-[#FCFBFDB8] mt-6 relative overflow-hidden">
           <div className="relative">
             <Upload
               fileData={fileData}
@@ -296,41 +294,45 @@ function EvaluateCourse() {
               Enter your essay title* (Required)
             </h5>
             <div className="relative">
-
-            <input
-              className="p-2 rounded-md border-2 border-orange-500 w-full"
-              name="title"
-              value={courseWork.title}
-              placeholder="How nations work..."
-              onChange={onOptionChange}
-            />
-            {errors.title && <Error>{errors.title}</Error>}
+              <input
+                className="w-full p-2 rounded-md border-2 border-orange-500 "
+                name="title"
+                value={courseWork.title}
+                placeholder="How nations work..."
+                onChange={onOptionChange}
+              />
+              {errors.title && <Error>{errors.title}</Error>}
             </div>
           </div>
 
           {/* Evaluate score button */}
           <>
-
-          <div
-            className={`rounded-md p-2 mt-5 bg-[#ADB8C9] text-[#FFFFFF] flex gap-2 cursor-pointer w-full sm:w-64  ${
-              errors.file || errors.CourseType || errors.subject || errors.title
-                ? "bg-[#ef7d7d] animate-bounce"
-                : "hover:animate-pulse"
-            }`}
-            onClick={evaluateScore}
-          >
-            <img src="/home/sparkel.svg" alt="sparkel" />
-            <span>
-            {errors.file || errors.CourseType || errors.subject || errors.title
-              ? "Please fill the required"
-              : "Evaluate your score"}
-            </span>
-          </div>
+            <div
+              className={`w-full sm:w-64 flex gap-2 rounded-md p-2 mt-5 bg-[#ADB8C9] text-[#FFFFFF] cursor-pointer  ${
+                errors.file ||
+                errors.CourseType ||
+                errors.subject ||
+                errors.title
+                  ? "bg-[#ef7d7d] animate-bounce"
+                  : "hover:animate-pulse"
+              }`}
+              onClick={evaluateScore}
+            >
+              <img src="/home/sparkel.svg" alt="sparkel" />
+              <span>
+                {errors.file ||
+                errors.CourseType ||
+                errors.subject ||
+                errors.title
+                  ? "Please fill the required"
+                  : "Evaluate your score"}
+              </span>
+            </div>
           </>
 
           {/* Loading animation */}
           <div
-            className={`absolute w-full h-full inset-0 flex items-center justify-center ${
+            className={`w-full h-full absolute inset-0 flex items-center justify-center ${
               showLoading ? "bg-[#FCFBFDB8] z-20" : "-z-10"
             } `}
           >
@@ -341,10 +343,7 @@ function EvaluateCourse() {
 
       {/* Left image part */}
       <div className="w-[420px] hidden lg:flex flex-col  justify-end  items-end">
-      <img
-          src="/home/astronaut.svg"
-          alt="astronaut"
-        />
+        <img src="/home/astronaut.svg" alt="astronaut" />
         <div className="rounded-sm  w-full z-20">
           <img src="/home/evaluate.svg" alt="evaluate" />
         </div>

@@ -2,12 +2,12 @@
 export default function UploadingAnimation({showload}) {
     
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center  z-20 ">
+      <div className="relative w-full h-full flex flex-col items-center justify-center z-20 ">
         
   
         {showload && (
           <button
-            className="relative w-full h-full rounded-full  border-[5px]  animate-extend"
+            className="relative w-full h-full rounded-full  border-[5px] animate-extend"
           >
             <span className="text-3xl text-[white] animate-disappear">
               Evaluating..
