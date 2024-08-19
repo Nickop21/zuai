@@ -211,9 +211,7 @@ function EvaluateCourse() {
         id: nanoidd,
         totalScore: 13,
         score: [7, 5, 3],
-        time: `${day} ${montharr[month]} ${year}`,
-        wordCountdata: wordCount,
-        pdfTextdata: pdfText,
+        time: `${day} ${montharr[month]} ${year}`
       });
       setTimeout(() => {
         resetUpload();
