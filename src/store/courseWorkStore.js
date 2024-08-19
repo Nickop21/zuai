@@ -13,7 +13,10 @@ const courseWorkStore = create(
         set((state) => ({courseData: [...state.courseData, processedData] 
         }));
       },
-      clearCourse: () => set(() => ({ data: [] })),
+      filterPdf: (filteritemid) => set((state) => ({
+        courseData: state.courseData?.filter(course => course.id === filteritemid)
+      })),
+      
       filterCourse: (selectedCourseWorkdataItem) => set((state) => ({
         selectedCourseWork: selectedCourseWorkdataItem
       }))

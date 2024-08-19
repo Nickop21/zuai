@@ -4,6 +4,7 @@ import Sidebar from "@/components/sidebar/sidebar";
 import Container from "@/components/container";
 import Head from "next/head";
 import Information from "@/components/information";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
         <main className="relative">
           <Sidebar />
           <div className="py-20 md:py-16">
-            <Container>{children}</Container>
+            <Container>{children}
+              <Toaster/>
+            </Container>
           </div>
           <Information/>
         </main>

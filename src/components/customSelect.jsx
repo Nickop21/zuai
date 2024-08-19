@@ -4,7 +4,7 @@ const SelectDropdown = ({ name, value, options, onChange, placeholder }) => {
   return (
     <select 
       name={name} 
-      className="rounded-md p-2 mx-1 outline-none text-[#5B6170] font-bold text-xs "  
+      className="custom-select rounded-md p-2 mx-1 outline-none text-[#5B6170] font-bold text-xs cursor-pointer "  
       value={value}  
       onChange={onChange}
       required
