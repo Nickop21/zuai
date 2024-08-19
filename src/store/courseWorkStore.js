@@ -14,7 +14,7 @@ const courseWorkStore = create(
         }));
       },
       filterPdf: (filteritemid) => set((state) => ({
-        courseData: state.courseData?.filter(course => course.id === filteritemid)
+        courseData: (state.courseData || []).filter(course => course.id !== filteritemid)
       })),
       
       filterCourse: (selectedCourseWorkdataItem) => set((state) => ({
